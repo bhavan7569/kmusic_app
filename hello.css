@@ -1,0 +1,25 @@
+.mycolour {
+  background: rgb(38, 35, 66);
+  background: linear-gradient(
+    273deg,
+    rgba(38, 35, 66, 0.8696807091977417) 0%,
+    rgba(101, 42, 77, 0.9537143226431197) 100%
+  );
+}
+
+.mycolour1:hover {
+  background: rgb(250, 97, 54);
+  background: linear-gradient(
+    180deg,
+    rgba(250, 97, 54, 0.6539944346879376) 0%,
+    rgba(255, 253, 253, 0) 50%
+  );
+}
+.mycolour2 :hover {
+  background: rgb(250, 97, 54);
+  background: linear-gradient(
+    90deg,
+    rgba(250, 97, 54, 0.6539944346879376) 0%,
+    rgba(255, 253, 253, 0) 50%
+  );
+}

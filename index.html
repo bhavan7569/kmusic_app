@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/hello.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-[#0a0a0a] text-white">
+    <div class="px-6 py-5 bg-[#0a0a0a] text-white flex">
+      <h1 class="text-[40px]">Melo</h1>
+      <div
+        class="bg-[#1e1e1e] w-[40%] ml-[10%] px-5 gap-5 mr-auto rounded-full flex items-center justify-center"
+      >
+        <img src="/search.svg" class="w-10" alt="" />
+        <input
+          id="search"
+          class="w-[30%] bg-transparent h-full w-full outline-none"
+          placeholder="Search by artists,songs or playlist"
+        />
+      </div>
+      <div class="flex gap-10 items-center">
+        <button
+          class="flex whitespace-nowrap bg-black h-[50px] w-[150px] r-3 text-[##ff6337] text-[#ff6337] rounded-3xl items-center justify-center border-2 border-[#ff6337] gap-2"
+        >
+          My channel<img class="-mb-[1.5px]" src="/lefticon.svg" alt="" />
+        </button>
+        <img
+          src="https://c.saavncdn.com/artists/Devi_Sri_Prasad_007_20240902064823_50x50.jpg"
+          class="rounded-full w-14 h-14"
+        />
+      </div>
+    </div>
+    <div class="flex h-full">
+      <div class="flex flex-col gap-10 pt-6">
+        <div class="text-xl hover:font-bold mycolour2 font-thin">
+          <h1
+            class="flex gap-5 px-5 py-2 w-full rounded-sm hover:border-l-4 hover:border-[#ff6337] hover:text-[#ff6337] items-center justify-center"
+          >
+            <img src="/feed.svg" class="w-5 h-5" alt="" />Feed
+          </h1>
+          <h1
+            class="flex gap-5 px-5 py-2 rounded-sm hover:border-l-4 hover:border-[#ff6337] hover:text-[#ff6337] items-center justify-center"
+          >
+            <img src="/playlist.svg" class="w-5 h-5" alt="" />playlist
+          </h1>
+          <h1
+            class="flex gap-5 px-5 py-2 rounded-sm hover:border-l-4 hover:border-[#ff6337] hover:text-[#ff6337] items-center justify-center"
+          >
+            <img src="/stastiscs.svg" class="w-5 h-5" alt="" />statiscs
+          </h1>
+        </div>
+        <div class="text-xl hover:font-bold mycolour2 font-thin">
+          <h1 class="text-[11px] p-3 pl-6 font-bold text-[#7d7d7d]">
+            YOUR MUSIC
+          </h1>
+          <h1
+            class="flex gap-5 px-5 py-2 rounded-sm hover:border-l-4 hover:border-[#ff6337] hover:text-[#ff6337]"
+          >
+            <img src="/favourate.svg" class="w-5 h-5" alt="" />
+            Favouriate
+          </h1>
+          <h1
+            class="flex gap-5 px-5 py-2 rounded-sm hover:border-l-4 hover:border-[#ff6337] hover:text-[#ff6337]"
+          >
+            <img src="/later.svg" class="w-5 h-5" alt="" />
+            Listen later
+          </h1>
+          <h1
+            class="flex gap-5 px-5 py-2 rounded-sm hover:border-l-4 hover:border-[#ff6337] hover:text-[#ff6337]"
+          >
+            <img src="/history.svg" class="w-5 h-5" alt="" />
+            History
+          </h1>
+          <h1
+            class="flex gap-5 px-5 py-2 w-full rounded-sm hover:border-l-4 hover:border-[#ff6337] hover:text-[#ff6337]"
+          >
+            <img src="/podcast.svg" class="w-5 h-5" alt="" />
+            Podcast
+          </h1>
+        </div>
+        <div>
+          <h1 class="text-[11px] p-3 pl-6 font-bold text-[#7d7d7d]">
+            YOUR PLAYLIST
+          </h1>
+          <h1 class="flex gap-5 px-5 py-2 items-center justify-center w-fit">
+            <img src="/telugu.svg" class="w-5 h-5" alt="" /> Teluge
+          </h1>
+          <h1 class="flex gap-5 px-5 py-2 items-center justify-center w-fit">
+            <img src="/telugu copy.svg" class="w-5 h-5" alt="" /> Hindi
+          </h1>
+          <h1 class="flex gap-5 px-5 py-2 items-center justify-center w-fit">
+            <img src="/telugu copy 2.svg" class="w-5 h-5" alt="" /> Tamil
+          </h1>
+          <h1 class="flex gap-5 px-5 py-2 items-center justify-center w-fit">
+            <img src="/telugu copy 3.svg" class="w-5 h-5" alt="" /> English
+          </h1>
+          <h1 class="pl-7 pt-5 text-[#ff6337]">Create new playlist +</h1>
+        </div>
+      </div>
+
+      <div
+        class="flex flex-col h-[85vh] py-5 pl-28 relative w-[70%] bg-[#0a0a0a]"
+      >
+        <div class="flex flex-row">
+          <div
+            class="w-[17vw] h-[37vh] flex flex-col item relative rounded-xl overflow-hidden bg-[#3d2433]"
+          >
+            <div
+              class="mycolour absolute backdrop-blur-[5px] h-full w-full flex gap-3 pt-20"
+            >
+              <div
+                class="w-3 h-10 bg-white opacity-5 rounded-full my-auto ml-2 z-1"
+              ></div>
+              <div
+                class="w-3 h-56 bg-white opacity-5 rounded-full my-auto ml-2 z-1"
+              ></div>
+              <div
+                class="w-3 h-36 bg-white opacity-5 rounded-full my-auto ml-2 z-1"
+              ></div>
+              <div
+                class="w-3 h-44 bg-white opacity-5 rounded-full my-auto ml-2 z-1"
+              ></div>
+              <div
+                class="w-3 h-24 bg-white opacity-5 rounded-full my-auto ml-2 z-1"
+              ></div>
+              <div
+                class="w-3 h-14 bg-white opacity-5 rounded-full my-auto ml-2 z-1"
+              ></div>
+              <div
+                class="w-3 h-32 bg-white opacity-5 rounded-full my-auto ml-2 z-1"
+              ></div>
+              <div
+                class="w-3 h-52 bg-white opacity-5 rounded-full my-auto ml-2 z-1"
+              ></div>
+              <div
+                class="w-3 h-36 bg-white opacity-5 rounded-full my-auto ml-2 z-1"
+              ></div>
+              <div
+                class="w-3 h-60 bg-white opacity-5 rounded-full my-auto ml-2 z-1"
+              ></div>
+              <div
+                class="w-3 h-24 bg-white opacity-5 rounded-full my-auto ml-2 z-1"
+              ></div>
+            </div>
+            <div class="flex flex-col px-7 py-12 justify-center gap-2 z-[2]">
+              <div>
+                <h1 class="text-sm">69 Trakes .4 hours 30 minutes</h1>
+                <h1 class="text-[30px]">Playlist for a Day</h1>
+              </div>
+              <img
+                src="https://c.saavncdn.com/313/Devara-Part-1-Telugu-Telugu-2024-20240926171010-150x150.jpg"
+                class="m-auto mt-10 h-40 rounded-xl w-40"
+                alt=""
+              />
+            </div>
+          </div>
+          <!-- <div class="h-[37vh] w-[42vw] bg-white ml-7 rounded-xl">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/FMrtSHAAPhM"
+              class="h-full w-full rounded-xl"
+              frameborder="0"
+            ></iframe>
+          </div> -->
+        </div>
+        <div class="flex border-t z-[1] border-gray-500 mt-5 w-[94%] gap-x-10">
+          <h1
+            class="hover:border-t-4 rounded-sm -mt-[2px] pt-5 z-[2] mycolour1 text-[20px] hover:border-[#ff6337] hover:text-[#ff6337] hover:font-bold font-thin"
+          >
+            Playlist
+          </h1>
+          <h1
+            class="hover:border-t-4 rounded-sm -mt-[2px] pt-5 z-[2] mycolour1 text-[20px] hover:border-[#ff6337] hover:text-[#ff6337] hover:font-bold font-thin"
+          >
+            Artists
+          </h1>
+          <h1
+            class="hover:border-t-4 rounded-sm -mt-[2px] pt-5 z-[2] mycolour1 text-[20px] hover:border-[#ff6337] hover:text-[#ff6337] hover:font-bold font-thin"
+          >
+            Albums
+          </h1>
+          <h1
+            class="hover:border-t-4 rounded-sm -mt-[2px] pt-5 z-[2] mycolour1 text-[20px] hover:border-[#ff6337] hover:text-[#ff6337] hover:font-bold font-thin"
+          >
+            Streams
+          </h1>
+          <h1
+            class="hover:border-t-4 rounded-sm -mt-[2px] pt-5 z-[2] mycolour1 text-[20px] hover:border-[#ff6337] hover:text-[#ff6337] hover:font-bold font-thin"
+          >
+            Friend's Playlist
+          </h1>
+        </div>
+        <div class="py-4" id="outputSongs">
+          <div class="flex gap-56 py-2 text-[15px] items-center">
+            <div class="flex items-center">
+              <img
+                src="https://c.saavncdn.com/editorial/charts_Telugu2000s_119381_20240408063159_150x150.jpg"
+                class="rounded-xl w-12 h-12"
+              />
+              <h1 class="w-32 ml-3 text-[20px]">Telugu 2000s</h1>
+            </div>
+            <h1>29 trakes.2h 15min</h1>
+            <h1>24 jan,2025</h1>
+            <div class="flex gap-8">
+              <img src="/playbutton.svg" class="w-6 h-6" alt="" />
+              <img src="/dots.svg" class="w-5 h-5" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="flex gap-52 bg-[#3c3c3c] w-[100vw] h-16 fixed bottom-0 items-center"
+    >
+      <div class="flex items-center gap-5 text-[20px]">
+        <img
+          src="https://c.saavncdn.com/editorial/charts_Telugu2000s_119381_20240408063159_150x150.jpg"
+          class="rounded-xl w-12 h-12"
+          alt=""
+        />
+        <h1>song</h1>
+      </div>
+      <div class="flex gap-8 items-center">
+        <img src="/back.svg" class="w-6 h-6" alt="" />
+        <button><img src="/playbutton.svg" class="w-6 h-6" alt="" /></button>
+        <img src="/forward.svg" class="w-6 h-6" alt="" />
+        <button><img src="/favourate.svg" class="w-5 h-5" alt="" /></button>
+        <input type="range" class="w-[50vw] h-1 min-"0" max-"100" />
+      </div>
+    </div>
+
+    <script>
+      const outputSongs = document.getElementById("outputSongs");
+      const search = document.getElementById("search");
+      const audioPlayer = new Audio(); // Create an audio player instance
+
+      // Listen for search input changes
+      search.addEventListener("change", (bhavan) => {
+        const searchValue = bhavan.target.value;
+        fetchingSongs(searchValue);
+      });
+
+      // Fetch songs from API
+      const fetchingSongs = async (searchValue) => {
+        const url = `https://luna-music-ai.vercel.app/api/search/songs?query=${searchValue}`;
+        const options = { method: "GET" };
+
+        try {
+          const response = await fetch(url, options);
+          const data = await response.json();
+          console.log(data?.data?.results);
+
+          // Render fetched songs
+          outputSongs.innerHTML = data?.data?.results
+            .map(
+              (song) => `
+                <div class="flex gap-56 py-2 text-[15px] items-center">
+                  <div class="flex items-center">
+                    <img
+                      src="${song?.image[2]?.url}"
+                      class="rounded-xl w-12 h-12"
+                      alt="${song?.name} Cover"
+                    />
+                    <h1 class="w-32 ml-3 text-[20px] truncate">${
+                      song?.name
+                    }</h1>
+                  </div>
+                  <h1>${song?.duration} seconds</h1>
+                  <h1>${song?.year || "Unknown year"}</h1>
+                  <div class="flex gap-8">
+                    <img 
+                      src="/playbutton.svg" 
+                      id="${song?.id}" 
+                      data-audio="${song?.downloadUrl?.[4]?.url}" 
+                      class="play-btn w-6 h-6" 
+                      alt="Play" 
+                    />
+                    <img src="/dots.svg" class="w-5 h-5" alt="More Options" />
+                  </div>
+                </div>
+              `
+            )
+            .join("");
+
+          // Add event listeners for play buttons
+          const playButtons = document.querySelectorAll(".play-btn");
+          playButtons.forEach((button) =>
+            button.addEventListener("click", () => {
+              const audioUrl = button.getAttribute("data-audio");
+              if (audioUrl) {
+                audioPlayer.src = audioUrl; // Set the audio source
+                audioPlayer.play(); // Play the audio
+                console.log(`Playing song from: ${audioUrl}`);
+              } else {
+                console.error("Audio URL not found for this song.");
+              }
+            })
+          );
+        } catch (error) {
+          console.error("Error fetching songs:", error);
+        }
+      };
+    </script>
+  </body>
+</html>
