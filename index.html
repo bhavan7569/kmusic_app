@@ -159,7 +159,7 @@
       <div
         class="flex flex-col h-[85vh] py-5 pl-28 relative w-[70%] bg-[#0a0a0a]"
       >
-        <div class="flex flex-row">
+        <!-- <div class="flex flex-row">
           <div
             class="w-[17vw] h-[37vh] flex flex-col item relative rounded-xl overflow-hidden bg-[#3d2433]"
           >
@@ -211,15 +211,15 @@
                 alt=""
               />
             </div>
-          </div>
-          <!-- <div class="h-[37vh] w-[42vw] bg-white ml-7 rounded-xl">
+          </div> -->
+        <!-- <div class="h-[37vh] w-[42vw] bg-white ml-7 rounded-xl">
             <iframe
               src="https://www.youtube-nocookie.com/embed/FMrtSHAAPhM"
               class="h-full w-full rounded-xl"
               frameborder="0"
             ></iframe>
           </div> -->
-        </div>
+        <!-- </div> -->
         <div class="flex border-t z-[1] border-gray-500 mt-5 w-[94%] gap-x-10">
           <h1
             class="hover:border-t-4 rounded-sm -mt-[2px] pt-5 z-[2] mycolour1 text-[20px] hover:border-[#ff6337] hover:text-[#ff6337] hover:font-bold font-thin"
@@ -277,114 +277,192 @@
     <div
       class="flex gap-52 bg-[#3c3c3c] w-[100vw] h-16 fixed bottom-0 items-center"
     >
-      <div class="flex items-center gap-5 text-[20px]">
-        <img
-          src="https://c.saavncdn.com/editorial/charts_Telugu2000s_119381_20240408063159_150x150.jpg"
-          class="rounded-xl w-12 h-12"
-          alt=""
-        />
-        <h1>song</h1>
-      </div>
-      <div class="flex gap-8 items-center">
-        <img
-          src="https://raw.githubusercontent.com/bhavan7569/kmusic_app/main/images/back.svg"
-          class="w-6 h-6"
-          alt=""
-        />
-        <button>
-          <img
-            src="https://raw.githubusercontent.com/bhavan7569/kmusic_app/main/images/playbutton.svg"
-            class="w-6 h-6"
-            alt=""
-          />
-        </button>
-        <img
-          src="https://raw.githubusercontent.com/bhavan7569/kmusic_app/main/images/forward.svg"
-          class="w-6 h-6"
-          alt=""
-        />
-        <button>
-          <img
-            src="https://raw.githubusercontent.com/bhavan7569/kmusic_app/main/images/favourate.svg"
-            class="w-5 h-5"
-            alt=""
-          />
-        </button>
-        <input type="range" class="range w-[50vw] h-1" />
-      </div>
-    </div>
+      <!-- HTML -->
+<div>
+  <h1>Song</h1>
+</div>
+<div class="back-button flex gap-8 items-center">
+  <img
+    src="https://raw.githubusercontent.com/bhavan7569/kmusic_app/main/images/back.svg"
+    class="w-6 h-6"
+    alt="Back"
+    id="back-btn"
+  />
+  <button class="pause-button" id="pause-btn">
+    <img
+      src="https://raw.githubusercontent.com/bhavan7569/kmusic_app/main/images/playbutton.svg"
+      class="w-6 h-6"
+      alt="Play/Pause"
+    />
+  </button>
+  
+  <img
+    src="https://raw.githubusercontent.com/bhavan7569/kmusic_app/main/images/forward.svg"
+    class="w-6 h-6"
+    alt="Forward"
+    id="next-btn"
+  />
+  <button id="favorite-btn">
+    <img
+      src="https://raw.githubusercontent.com/bhavan7569/kmusic_app/main/images/favourate.svg"
+      class="w-5 h-5"
+      alt="Favorite"
+    />
+  </button>
+  <input
+    type="range"
+    id="myinput"
+    value="0"
+    max="100"
+    class="range w-[50vw]"
+    style="background: linear-gradient(to right, rgba(250, 97, 54, 0.6539944346879376) 0%, rgba(250, 97, 54, 0.6539944346879376) 0%, rgb(222, 226, 230) 5%, rgb(222, 226, 230) 100%);"
+  />
+</div>
+<div>
+  <h1>Volume</h1>
+</div>
 
-    <script>
-      const outputSongs = document.getElementById("outputSongs");
-      const search = document.getElementById("search");
-      const audioPlayer = new Audio(); // Create an audio player instance
+<!-- JavaScript -->
+<script>
+  // Slider functionality
+  const slider = document.getElementById("myinput");
+  const min = slider.min;
+  const max = slider.max;
+  const value = slider.value;
 
-      // Listen for search input changes
-      search.addEventListener("change", (bhavan) => {
-        const searchValue = bhavan.target.value;
-        fetchingSongs(searchValue);
-      });
+  // Set initial slider background
+  slider.style.background = `linear-gradient(to right, red 0%, red ${
+    ((value - min) / (max - min)) * 100
+  }%, #DEE2E6 ${((value - min) / (max - min)) * 100}%, #DEE2E6 100%)`;
 
-      // Fetch songs from API
-      const fetchingSongs = async (searchValue) => {
-        const url = `https://luna-music-ai.vercel.app/api/search/songs?query=${searchValue}`;
-        const options = { method: "GET" };
+  slider.oninput = function () {
+    this.style.background = `linear-gradient(to right, red 0%, red ${
+      ((this.value - this.min) / (this.max - this.min)) * 100
+    }%, #DEE2E6 ${((this.value - this.min) / (this.max - this.min)) * 100}%, #DEE2E6 100%)`;
+  };
 
-        try {
-          const response = await fetch(url, options);
-          const data = await response.json();
-          console.log(data?.data?.results);
+  // Audio player setup
+  const audioPlayer = new Audio();
+  const pauseButton = document.getElementById("pause-btn");
+  const playIcon = pauseButton.querySelector("img");
+  const backButton = document.getElementById("back-btn");
+  const nextButton = document.getElementById("next-btn");
+  const rangeSlider = document.getElementById("myinput");
 
-          // Render fetched songs
-          outputSongs.innerHTML = data?.data?.results
-            .map(
-              (song) => `
-                <div class="flex gap-56 py-2 text-[15px] items-center">
-                  <div class="flex items-center">
-                    <img
-                      src="${song?.image[2]?.url}"
-                      class="rounded-xl w-12 h-12"
-                      alt="${song?.name} Cover"
-                    />
-                    <h1 class="w-32 ml-3 text-[20px] truncate">${
-                      song?.name
-                    }</h1>
-                  </div>
-                  <h1>${song?.duration} seconds</h1>
-                  <h1>${song?.year || "Unknown year"}</h1>
-                  <div class="flex gap-8">
-                    <img 
-                      src="https://raw.githubusercontent.com/bhavan7569/kmusic_app/main/images/playbutton.svg" 
-                      id="${song?.id}" 
-                      data-audio="${song?.downloadUrl?.[4]?.url}" 
-                      class="play-btn w-6 h-6" 
-                      alt="Play" 
-                    />
-                    <img src="https://raw.githubusercontent.com/bhavan7569/kmusic_app/main/images/dots.svg" class="w-5 h-5" alt="More Options" />
-                  </div>
-                </div>
-              `
-            )
-            .join("");
+  let currentSongIndex = 0;
+  const songs = [];
 
-          // Add event listeners for play buttons
-          const playButtons = document.querySelectorAll(".play-btn");
-          playButtons.forEach((button) =>
-            button.addEventListener("click", () => {
-              const audioUrl = button.getAttribute("data-audio");
-              if (audioUrl) {
-                audioPlayer.src = audioUrl; // Set the audio source
-                audioPlayer.play(); // Play the audio
-                console.log(`Playing song from: ${audioUrl}`);
-              } else {
-                console.error("Audio URL not found for this song.");
-              }
-            })
-          );
-        } catch (error) {
-          console.error("Error fetching songs:", error);
-        }
-      };
-    </script>
+  // Fetch songs from API
+  const outputSongs = document.getElementById("outputSongs");
+  const search = document.getElementById("search");
+
+  // Listen for search input changes
+  search.addEventListener("change", (bhavan) => {
+    const searchValue = bhavan.target.value;
+    fetchingSongs(searchValue);
+  });
+
+  const fetchingSongs = async (searchValue) => {
+    const url = `https://luna-music-ai.vercel.app/api/search/songs?query=${searchValue}`;
+    const options = { method: "GET" };
+
+    try {
+      const response = await fetch(url, options);
+      const data = await response.json();
+      console.log(data?.data?.results);
+
+      // Render fetched songs
+      outputSongs.innerHTML = data?.data?.results
+        .map(
+          (song) => `
+          <div class="flex gap-56 py-2 text-[15px] items-center">
+            <div class="flex items-center">
+              <img
+                src="${song?.image[2]?.url}"
+                class="rounded-xl w-12 h-12"
+                alt="${song?.name} Cover"
+              />
+              <h1 class="w-32 ml-3 text-[20px] truncate">${song?.name}</h1>
+            </div>
+            <h1>${song?.duration} seconds</h1>
+            <h1>${song?.year || "Unknown year"}</h1>
+            <div class="flex gap-8">
+              <img 
+                src="https://raw.githubusercontent.com/bhavan7569/kmusic_app/main/images/playbutton.svg" 
+                id="${song?.id}" 
+                data-audio="${song?.downloadUrl?.[4]?.url}" 
+                class="play-btn w-6 h-6" 
+                alt="Play" 
+              />
+              <img src="https://raw.githubusercontent.com/bhavan7569/kmusic_app/main/images/dots.svg" class="w-5 h-5" alt="More Options" />
+            </div>
+          </div>
+        `
+        )
+        .join("");
+
+      // Add event listeners for play buttons
+      const playButtons = document.querySelectorAll(".play-btn");
+      playButtons.forEach((button) =>
+        button.addEventListener("click", () => {
+          // if the audio player is playing, pause it
+          if (!audioPlayer.paused) {
+            audioPlayer.pause();
+          }
+          const audioUrl = button.getAttribute("data-audio");
+          if (audioUrl) {
+            audioPlayer.src = audioUrl; // Set the audio source
+            audioPlayer.play(); // Play the audio
+            console.log(`Playing song from: ${audioUrl}`);
+          } else {
+            console.error("Audio URL not found for this song.");
+          }
+        })
+      );
+    } catch (error) {
+      console.error("Error fetching songs:", error);
+    }
+  };
+
+  // Play/Pause functionality
+  pauseButton.addEventListener("click", () => {
+    if (audioPlayer.paused) {
+      audioPlayer.play();
+      playIcon.src = "https://raw.githubusercontent.com/bhavan7569/kmusic_app/main/images/pausebutton.svg"; // Pause icon
+    } else {
+      audioPlayer.pause();
+      playIcon.src = "https://raw.githubusercontent.com/bhavan7569/kmusic_app/main/images/playbutton.svg"; // Play icon
+    }
+  });
+
+  // Back functionality
+  backButton.addEventListener("click", () => {
+    currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length; // Loop through songs
+    loadSong(currentSongIndex);
+    audioPlayer.play();
+    playIcon.src = "https://raw.githubusercontent.com/bhavan7569/kmusic_app/main/images/pausebutton.svg"; // Pause icon
+  });
+
+  // Forward functionality
+  nextButton.addEventListener("click", () => {
+    currentSongIndex = (currentSongIndex + 1) % songs.length; // Loop through songs
+    loadSong(currentSongIndex);
+    audioPlayer.play();
+    playIcon.src = "https://raw.githubusercontent.com/bhavan7569/kmusic_app/main/images/pausebutton.svg"; // Pause icon
+  });
+
+  // Range slider functionality for updating audio progress
+  audioPlayer.addEventListener("timeupdate", () => {
+    const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+    rangeSlider.value = progress;
+    rangeSlider.style.background = `linear-gradient(to right, rgba(250, 97, 54, 0.6539944346879376) 0%, rgba(250, 97, 54, 0.6539944346879376) ${progress}%, rgb(222, 226, 230) ${progress}%, rgb(222, 226, 230) 100%)`;
+  });
+
+  // Handle user interaction with the range slider
+  rangeSlider.addEventListener("input", () => {
+    const newTime = (rangeSlider.value / 100) * audioPlayer.duration;
+    audioPlayer.currentTime = newTime;
+  });
+</script>
   </body>
 </html>

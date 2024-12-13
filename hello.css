@@ -23,6 +23,16 @@
     rgba(255, 253, 253, 0) 50%
   );
 }
-.range::-webkit-slider-thumb {
-  background: #00fd0a;
+#myinput {
+  border-radius: 8px;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  width: 6px;
+  -webkit-appearance: none;
+  height: 12px;
+  background: rgb(250, 97, 54);
+  border-radius: 2px;
 }
