@@ -23,3 +23,6 @@
     rgba(255, 253, 253, 0) 50%
   );
 }
+.range::-webkit-slider-thumb {
+  background: #00fd0a;
+}
