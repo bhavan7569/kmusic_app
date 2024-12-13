@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/hello.css" />
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
+
   <body class="bg-[#0a0a0a] text-white">
     <div class="px-6 py-5 bg-[#0a0a0a] text-white flex">
       <h1 class="text-[40px]">Melo</h1>
@@ -278,103 +279,113 @@
       class="flex gap-52 bg-[#3c3c3c] w-[100vw] h-16 fixed bottom-0 items-center"
     >
       <!-- HTML -->
-<div>
-  <h1>Song</h1>
-</div>
-<div class="back-button flex gap-8 items-center">
-  <img
-    src="https://raw.githubusercontent.com/bhavan7569/kmusic_app/main/images/back.svg"
-    class="w-6 h-6"
-    alt="Back"
-    id="back-btn"
-  />
-  <button class="pause-button" id="pause-btn">
-    <img
-      src="https://raw.githubusercontent.com/bhavan7569/kmusic_app/main/images/playbutton.svg"
-      class="w-6 h-6"
-      alt="Play/Pause"
-    />
-  </button>
-  
-  <img
-    src="https://raw.githubusercontent.com/bhavan7569/kmusic_app/main/images/forward.svg"
-    class="w-6 h-6"
-    alt="Forward"
-    id="next-btn"
-  />
-  <button id="favorite-btn">
-    <img
-      src="https://raw.githubusercontent.com/bhavan7569/kmusic_app/main/images/favourate.svg"
-      class="w-5 h-5"
-      alt="Favorite"
-    />
-  </button>
-  <input
-    type="range"
-    id="myinput"
-    value="0"
-    max="100"
-    class="range w-[50vw]"
-    style="background: linear-gradient(to right, rgba(250, 97, 54, 0.6539944346879376) 0%, rgba(250, 97, 54, 0.6539944346879376) 0%, rgb(222, 226, 230) 5%, rgb(222, 226, 230) 100%);"
-  />
-</div>
-<div>
-  <h1>Volume</h1>
-</div>
+      <div>
+        <h1>Song</h1>
+      </div>
+      <div class="back-button flex gap-8 items-center">
+        <img
+          src="https://raw.githubusercontent.com/bhavan7569/kmusic_app/main/images/back.svg"
+          class="w-6 h-6"
+          alt="Back"
+          id="back-btn"
+        />
+        <button class="pause-button" id="pause-btn">
+          <img
+            src="https://raw.githubusercontent.com/bhavan7569/kmusic_app/main/images/playbutton.svg"
+            class="w-6 h-6"
+            alt="Play/Pause"
+          />
+        </button>
 
-<!-- JavaScript -->
-<script>
-  // Slider functionality
-  const slider = document.getElementById("myinput");
-  const min = slider.min;
-  const max = slider.max;
-  const value = slider.value;
+        <img
+          src="https://raw.githubusercontent.com/bhavan7569/kmusic_app/main/images/forward.svg"
+          class="w-6 h-6"
+          alt="Forward"
+          id="next-btn"
+        />
+        <button id="favorite-btn">
+          <img
+            src="https://raw.githubusercontent.com/bhavan7569/kmusic_app/main/images/favourate.svg"
+            class="w-5 h-5"
+            alt="Favorite"
+          />
+        </button>
+        <input
+          type="range"
+          id="myinput"
+          value="0"
+          max="100"
+          class="range w-[50vw]"
+          style="
+            background: linear-gradient(
+              to right,
+              rgba(250, 97, 54, 0.6539944346879376) 0%,
+              rgba(250, 97, 54, 0.6539944346879376) 0%,
+              rgb(222, 226, 230) 5%,
+              rgb(222, 226, 230) 100%
+            );
+          "
+        />
+      </div>
+      <div>
+        <h1>Volume</h1>
+      </div>
 
-  // Set initial slider background
-  slider.style.background = `linear-gradient(to right, red 0%, red ${
-    ((value - min) / (max - min)) * 100
-  }%, #DEE2E6 ${((value - min) / (max - min)) * 100}%, #DEE2E6 100%)`;
+      <!-- JavaScript -->
+      <script>
+        // Slider functionality
+        const slider = document.getElementById("myinput");
+        const min = slider.min;
+        const max = slider.max;
+        const value = slider.value;
 
-  slider.oninput = function () {
-    this.style.background = `linear-gradient(to right, red 0%, red ${
-      ((this.value - this.min) / (this.max - this.min)) * 100
-    }%, #DEE2E6 ${((this.value - this.min) / (this.max - this.min)) * 100}%, #DEE2E6 100%)`;
-  };
+        // Set initial slider background
+        slider.style.background = `linear-gradient(to right, red 0%, red ${
+          ((value - min) / (max - min)) * 100
+        }%, #DEE2E6 ${((value - min) / (max - min)) * 100}%, #DEE2E6 100%)`;
 
-  // Audio player setup
-  const audioPlayer = new Audio();
-  const pauseButton = document.getElementById("pause-btn");
-  const playIcon = pauseButton.querySelector("img");
-  const backButton = document.getElementById("back-btn");
-  const nextButton = document.getElementById("next-btn");
-  const rangeSlider = document.getElementById("myinput");
+        slider.oninput = function () {
+          this.style.background = `linear-gradient(to right, red 0%, red ${
+            ((this.value - this.min) / (this.max - this.min)) * 100
+          }%, #DEE2E6 ${
+            ((this.value - this.min) / (this.max - this.min)) * 100
+          }%, #DEE2E6 100%)`;
+        };
 
-  let currentSongIndex = 0;
-  const songs = [];
+        // Audio player setup
+        const audioPlayer = new Audio();
+        const pauseButton = document.getElementById("pause-btn");
+        const playIcon = pauseButton.querySelector("img");
+        const backButton = document.getElementById("back-btn");
+        const nextButton = document.getElementById("next-btn");
+        const rangeSlider = document.getElementById("myinput");
 
-  // Fetch songs from API
-  const outputSongs = document.getElementById("outputSongs");
-  const search = document.getElementById("search");
+        let currentSongIndex = 0;
+        const songs = [];
 
-  // Listen for search input changes
-  search.addEventListener("change", (bhavan) => {
-    const searchValue = bhavan.target.value;
-    fetchingSongs(searchValue);
-  });
+        // Fetch songs from API
+        const outputSongs = document.getElementById("outputSongs");
+        const search = document.getElementById("search");
 
-  const fetchingSongs = async (searchValue) => {
-    const url = `https://luna-music-ai.vercel.app/api/search/songs?query=${searchValue}`;
-    const options = { method: "GET" };
+        // Listen for search input changes
+        search.addEventListener("change", (bhavan) => {
+          const searchValue = bhavan.target.value;
+          fetchingSongs(searchValue);
+        });
 
-    try {
-      const response = await fetch(url, options);
-      const data = await response.json();
-      console.log(data?.data?.results);
+        const fetchingSongs = async (searchValue) => {
+          const url = `https://luna-music-ai.vercel.app/api/search/songs?query=${searchValue}`;
+          const options = { method: "GET" };
 
-      // Render fetched songs
-      outputSongs.innerHTML = data?.data?.results
-        .map(
-          (song) => `
+          try {
+            const response = await fetch(url, options);
+            const data = await response.json();
+            console.log(data?.data?.results);
+
+            // Render fetched songs
+            outputSongs.innerHTML = data?.data?.results
+              .map(
+                (song) => `
           <div class="flex gap-56 py-2 text-[15px] items-center">
             <div class="flex items-center">
               <img
@@ -398,71 +409,78 @@
             </div>
           </div>
         `
-        )
-        .join("");
+              )
+              .join("");
 
-      // Add event listeners for play buttons
-      const playButtons = document.querySelectorAll(".play-btn");
-      playButtons.forEach((button) =>
-        button.addEventListener("click", () => {
-          // if the audio player is playing, pause it
-          if (!audioPlayer.paused) {
-            audioPlayer.pause();
+            // Add event listeners for play buttons
+            const playButtons = document.querySelectorAll(".play-btn");
+            playButtons.forEach((button) =>
+              button.addEventListener("click", () => {
+                // if the audio player is playing, pause it
+                if (!audioPlayer.paused) {
+                  audioPlayer.pause();
+                }
+                const audioUrl = button.getAttribute("data-audio");
+                if (audioUrl) {
+                  audioPlayer.src = audioUrl; // Set the audio source
+                  audioPlayer.play(); // Play the audio
+                  console.log(`Playing song from: ${audioUrl}`);
+                } else {
+                  console.error("Audio URL not found for this song.");
+                }
+              })
+            );
+          } catch (error) {
+            console.error("Error fetching songs:", error);
           }
-          const audioUrl = button.getAttribute("data-audio");
-          if (audioUrl) {
-            audioPlayer.src = audioUrl; // Set the audio source
-            audioPlayer.play(); // Play the audio
-            console.log(`Playing song from: ${audioUrl}`);
+        };
+
+        // Play/Pause functionality
+        pauseButton.addEventListener("click", () => {
+          if (audioPlayer.paused) {
+            audioPlayer.play();
+            playIcon.src =
+              "https://raw.githubusercontent.com/bhavan7569/kmusic_app/main/images/pausebutton.svg"; // Pause icon
           } else {
-            console.error("Audio URL not found for this song.");
+            audioPlayer.pause();
+            playIcon.src =
+              "https://raw.githubusercontent.com/bhavan7569/kmusic_app/main/images/playbutton.svg"; // Play icon
           }
-        })
-      );
-    } catch (error) {
-      console.error("Error fetching songs:", error);
-    }
-  };
+        });
 
-  // Play/Pause functionality
-  pauseButton.addEventListener("click", () => {
-    if (audioPlayer.paused) {
-      audioPlayer.play();
-      playIcon.src = "https://raw.githubusercontent.com/bhavan7569/kmusic_app/main/images/pausebutton.svg"; // Pause icon
-    } else {
-      audioPlayer.pause();
-      playIcon.src = "https://raw.githubusercontent.com/bhavan7569/kmusic_app/main/images/playbutton.svg"; // Play icon
-    }
-  });
+        // Back functionality
+        backButton.addEventListener("click", () => {
+          currentSongIndex =
+            (currentSongIndex - 1 + songs.length) % songs.length; // Loop through songs
+          loadSong(currentSongIndex);
+          audioPlayer.play();
+          playIcon.src =
+            "https://raw.githubusercontent.com/bhavan7569/kmusic_app/main/images/pausebutton.svg"; // Pause icon
+        });
 
-  // Back functionality
-  backButton.addEventListener("click", () => {
-    currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length; // Loop through songs
-    loadSong(currentSongIndex);
-    audioPlayer.play();
-    playIcon.src = "https://raw.githubusercontent.com/bhavan7569/kmusic_app/main/images/pausebutton.svg"; // Pause icon
-  });
+        // Forward functionality
+        nextButton.addEventListener("click", () => {
+          currentSongIndex = (currentSongIndex + 1) % songs.length; // Loop through songs
+          loadSong(currentSongIndex);
+          audioPlayer.play();
+          playIcon.src =
+            "https://raw.githubusercontent.com/bhavan7569/kmusic_app/main/images/pausebutton.svg"; // Pause icon
+        });
 
-  // Forward functionality
-  nextButton.addEventListener("click", () => {
-    currentSongIndex = (currentSongIndex + 1) % songs.length; // Loop through songs
-    loadSong(currentSongIndex);
-    audioPlayer.play();
-    playIcon.src = "https://raw.githubusercontent.com/bhavan7569/kmusic_app/main/images/pausebutton.svg"; // Pause icon
-  });
+        // Range slider functionality for updating audio progress
+        audioPlayer.addEventListener("timeupdate", () => {
+          const progress =
+            (audioPlayer.currentTime / audioPlayer.duration) * 100;
+          rangeSlider.value = progress;
+          rangeSlider.style.background = `linear-gradient(to right, rgba(250, 97, 54, 0.6539944346879376) 0%, rgba(250, 97, 54, 0.6539944346879376) ${progress}%, rgb(222, 226, 230) ${progress}%, rgb(222, 226, 230) 100%)`;
+        });
 
-  // Range slider functionality for updating audio progress
-  audioPlayer.addEventListener("timeupdate", () => {
-    const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-    rangeSlider.value = progress;
-    rangeSlider.style.background = `linear-gradient(to right, rgba(250, 97, 54, 0.6539944346879376) 0%, rgba(250, 97, 54, 0.6539944346879376) ${progress}%, rgb(222, 226, 230) ${progress}%, rgb(222, 226, 230) 100%)`;
-  });
-
-  // Handle user interaction with the range slider
-  rangeSlider.addEventListener("input", () => {
-    const newTime = (rangeSlider.value / 100) * audioPlayer.duration;
-    audioPlayer.currentTime = newTime;
-  });
-</script>
+        // Handle user interaction with the range slider
+        rangeSlider.addEventListener("input", () => {
+          const newTime = (rangeSlider.value / 100) * audioPlayer.duration;
+          audioPlayer.currentTime = newTime;
+        });
+      </script>
+    </div>
   </body>
 </html>
